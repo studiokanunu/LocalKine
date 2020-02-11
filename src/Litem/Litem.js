@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import './List_item.css';
+import './Litem.css';
 
-export default class List_item extends Component {
+export default class ListItems extends Component {
   render() {
 
     return (

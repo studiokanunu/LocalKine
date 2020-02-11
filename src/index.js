@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import List from './List/List.js';
-import './index.css';
+//
+//import './index.css';
 
 class App extends React.Component {
   render() {

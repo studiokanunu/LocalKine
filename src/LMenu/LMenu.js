@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import './List_menu.css';
+import './Lmenu.css';
 //This is a simple sorting and adding menu that will be included
-export default class List_menu extends Component {
+export default class ListMenu extends Component {
   render() {
-
+    localStorage.getItem('user')
     return (
       <div className='list-menu'>
         <input type='text' placeholder='Search' onChange={(e) => this.props.search(e)} />

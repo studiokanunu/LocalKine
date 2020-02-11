@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import List_item from '../List-item/List_item.js';
-import Edit_popup from '../Edit-popup/Edit_popup.js';
-import List_menu from '../List-menu/List_menu.js';
+import ListItem from '../Litem/Litem.js';
+import EditPopup from '../Editpopup/Editpopup.js';
+import ListMenu from '../LMenu/LMenu.js';
 import './List.css';
 
 var dummy_data = [
@@ -152,9 +152,9 @@ export default class List extends Component {
       return element !== undefined;
     });
 
-    const List_Items = users.map((user, index) => {
+    const ListItems = users.map((user, index) => {
       return (
-        <List_item 
+        <ListItem
           key={user.id} 
           id={user.id} 
           name={user.name} 
@@ -167,17 +167,17 @@ export default class List extends Component {
 
     return (
     	<div>
-        <List_menu 
+        <ListMenu 
           search={this.search}
           sort={this.sort}
           addTrigger={this.PopupTrigger}
         />
 
         <ul className='list'>
-          {List_Items}
+          {ListItems}
         </ul>
 
-        <Edit_popup 
+        <EditPopup 
           edit_id={this.state.popup_edditing_id} 
           visible={this.state.popup_visible} 
           edit={this.edit} 

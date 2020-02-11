@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Edit_popup.css';
+import './Editpopup.css';
 
 export default class Edit_popup extends Component {
   constructor(props) {
