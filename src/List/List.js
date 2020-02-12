@@ -3,29 +3,26 @@ import ListItem from '../Litem/Litem.js';
 import EditPopup from '../Editpopup/Editpopup.js';
 import ListMenu from '../LMenu/LMenu.js';
 import './List.css';
+//This is calls back the stored browser data on refresh
+var stored = JSON.parse(localStorage.getItem('item'));
 
-var dummy_data = [
+
+/*var dummydata = [
   {
-    name: 'Oleg',
+    first: 'Oleg',
+    last:'Petrov',
     phone: '+38(067)8881111',
+    email:'test@test.com',
     id: 0
   },
   {
-    name: 'Bobby',
+    first: 'Bobby',
+    last: 'Fisher',
     phone: '+1(062)7770663',
+    email:'test@test.com',
     id: 1
-  },
-  {
-    name: 'Kim',
-    phone: '+43(027)7770673',
-    id: 2
-  },
-  {
-    name: 'Tim',
-    phone: '+44(88)7770000',
-    id: 3
   }
-];
+]; */
 
 export default class List extends Component {
   constructor(props) {
@@ -38,7 +35,7 @@ export default class List extends Component {
     this.PopupTrigger = this.PopupTrigger.bind(this);
 
     this.state = {
-      users: dummy_data,
+      users: stored,
       popup_visible: false,
       popup_edditing_id: null,
       search_term: ''
@@ -61,15 +58,16 @@ export default class List extends Component {
       users: users_data
     });
   }
-
+//simple sort, merely places users alpha by lastname, wasn't in the US, but I thought it might be handy
   sort() {
     let users = this.state.users;
 
     users.sort((a, b) => {
-      if(a.name < b.name) return -1;
-      if(a.name > b.name) return 1;
-      return 0;
-    });
+      if(a.last < b.last) return -1;
+      if(a.last > b.last) return 1;
+ return 0;
+    }
+    );
 
     this.setState({
       users: users
@@ -80,11 +78,17 @@ export default class List extends Component {
     let users_data = this.state.users;
 
     if (this.state.popup_edditing_id !== null) {
-      if (data.name !== '') {
-        users_data[data.id].name = data.name;
+      if (data.first !== '') {
+        users_data[data.id].first = data.first;
+      }
+      if (data.last !== '') {
+        users_data[data.id].last = data.last;
       }
       if (data.phone !== '') {
         users_data[data.id].phone = data.phone;
+      }
+      if (data.email !== '') {
+        users_data[data.id].email = data.email;
       }
 
       this.setState({
@@ -104,8 +108,10 @@ export default class List extends Component {
       }
 
       let new_user = {
-        name: data.name,
+        first: data.first,
+        last: data.last,
         phone: data.phone,
+        email: data.email,
         id: user_id
       };
 
@@ -136,10 +142,19 @@ export default class List extends Component {
   }
 
   render() {
+
+    
     let users = this.state.users;
 
+     //This sets the data to LocalStorage
+     localStorage.setItem('item', JSON.stringify(users));
+
     users = users.map((user, index) => {
-      if (user.name.toLowerCase().indexOf(this.state.search_term.toLowerCase()) === 0) {
+      if (user.last.toLowerCase().indexOf(this.state.search_term.toLowerCase()) === 0) {
+        return user;
+      }
+
+      if (user.first.toLowerCase().indexOf(this.state.search_term.toLowerCase()) === 0) {
         return user;
       }
       else {
@@ -152,13 +167,15 @@ export default class List extends Component {
       return element !== undefined;
     });
 
-    const ListItems = users.map((user, index) => {
+    const List_Items = users.map((user, index) => {
       return (
-        <ListItem
+        <ListItem 
           key={user.id} 
           id={user.id} 
-          name={user.name} 
+          first={user.first}
+          last={user.last}  
           phone={user.phone} 
+          email={user.email} 
           delete={this.delete} 
           editTrigger={this.PopupTrigger}
         />
@@ -174,7 +191,7 @@ export default class List extends Component {
         />
 
         <ul className='list'>
-          {ListItems}
+          {List_Items}
         </ul>
 
         <EditPopup 

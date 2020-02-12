@@ -6,8 +6,10 @@ export default class Edit_popup extends Component {
     super(props);
 
     this.state = {
-      name: '',
+      first: '',
+      last: '',
       phone: '',
+      email:''
     };
   }
 
@@ -15,23 +17,35 @@ export default class Edit_popup extends Component {
     e.preventDefault();
 
     const user_data = {
-      name: this.state.name,
+      first: this.state.first,
+      last: this.state.last,
       phone: this.state.phone,
+      email: this.state.email,
       id: this.props.edit_id
     };
 
     this.props.edit(user_data);
   }
 
-  handleNameChange(e) {
+  handleFirstChange(e) {
     this.setState({
-      name: e.target.value
+      first: e.target.value
+    });
+  }
+  handleLastChange(e) {
+    this.setState({
+      last: e.target.value
     });
   }
 
   handlePhoneChange(e) {
     this.setState({
       phone: e.target.value
+    });
+  }
+  handleEmailChange(e) {
+    this.setState({
+      email: e.target.value
     });
   }
 
@@ -48,9 +62,12 @@ export default class Edit_popup extends Component {
     return (
       <div className={popup_class}>
         <form>
-          <input type='text' placeholder='Name' name='user-name' value={this.state.name} onChange={(e) => this.handleNameChange(e)} />
-          <input type='tel' placeholder='Phone' name='user-phone' value={this.state.phone} onChange={(e) => this.handlePhoneChange(e)} />
-          <button onClick={(e) => this.edit_data(e)}>Submit</button>
+          <input type='text' className="form-control" placeholder='First' name='user-first' value={this.state.first} onChange={(e) => this.handleFirstChange(e)} />
+          <input type='text' className="form-control" placeholder='First' name='user-last' value={this.state.last} onChange={(e) => this.handleLastChange(e)} />
+          <input type='tel' className="form-control" placeholder='Phone' name='user-phone' value={this.state.phone} onChange={(e) => this.handlePhoneChange(e)} />
+          <input type='email'  className="form-control" placeholder='Email' name='user-email' value={this.state.email} onChange={(e) => this.handleEmailChange(e)} />
+          
+          <button className="btn btn-success btn-sm" onClick={(e) => this.edit_data(e)}>Submit</button>
         </form>
       </div>
     );

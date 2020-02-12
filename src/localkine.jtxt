@@ -1,0 +1,33 @@
+var vals=[]
+  
+    item.push('users')
+    localStorage.setItem('item', JSON.stringify(users));
+
+localStorage.setItem('name', JSON.stringify(vals));
+
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-primary" onClick={() => this.props.editTrigger(this.props.id)}>Edit</button>
+  <button type="button" class="btn btn-secondary" onClick={() => this.props.delete(this.props.id)}>Delete</button>
+</div>
+
+item	[{"name":"Oleg","phone":"+38(067)8881111","id":0},{"name":"Bobby","phone":"+1(062)7770663","id":1},{"name":"Kim","phone":"+43(027)7770673","id":2},{"name":"Tim","phone":"+44(88)7770000","id":3}]
+item	[{"name":"Oleg","phone":"+38(067)8881111","id":0},{"name":"Bobby","phone":"+1(062)7770663","id":1},{"name":"Kim","phone":"+43(027)7770673","id":2},{"name":"Tim","phone":"+44(88)7770000","id":3},{"name":"Craig","phone":"324-567-1234","id":4}]
+item	[{"name":"Oleg","phone":"+38(067)8881111","id":0},{"name":"Bobby","phone":"+1(062)7770663","id":1},{"name":"Kim","phone":"+43(027)7770673","id":2},{"name":"Tim","phone":"+44(88)7770000","id":3},{"name":"Craig","phone":"324-567-1234","id":4},{"name":"Titus","phone":"808-567-2234","id":5}]
+
+
+
+
+<div class="input-group">
+     <input class="form-control py-2 rounded-pill mr-1 pr-5" type="search" value="search" onChange={(e) => this.props.search(e)}>
+     <span class="input-group-append">
+         <button class="btn rounded-pill border-0 ml-n5" type="button">
+               <i class="fa fa-search"></i>
+         </button>
+     </span>
+ </div>
+
+
+
+
+item	[{"first":"Gretchen","last":"Rumsfield","phone":"(808) 123-4567","email":"gretchenrum@gmail.com","id":0},{"first":"Jack","last":"Frost","phone":"123-567-3456","email":"jack@frost.com","id":1},{"first":"Able","last":"Neumann","phone":"+12(456)234-8976","email":"able@usaid.gov","id":2}]
+ item	[{"first":"Oleg","last":"Petrov","phone":"+38(067)8881111","email":"test@test.com","id":0},{"first":"Bobby","last":"Fisher","phone":"+1(062)7770663","email":"test@test.com","id":1},{"first":"Sam","last":"Fixer","phone":"+23(213)345-8976","id":2}]

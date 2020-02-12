@@ -5,12 +5,13 @@ export default class ListMenu extends Component {
   render() {
     localStorage.getItem('user')
     return (
-      <div className='list-menu'>
-        <input type='text' placeholder='Search' onChange={(e) => this.props.search(e)} />
-        <div>
-        	<div className='list-menu-button' onClick={() => this.props.sort()}>Sort</div>
-        	<div className='list-menu-button' onClick={() => this.props.addTrigger(null)}>Add</div>
-        </div>
+
+      <div><br/>
+        <input type='search' placeholder='Search' onChange={(e) => this.props.search(e)} />
+<span className="btn-group" role="group"><button type="button" className="btn btn-light btn-sm" onClick={() => this.props.sort()}>Sort</button>
+        <button type="button" className="btn btn-success btn-sm"  onClick={() => this.props.addTrigger(null)}>Add</button></span>
+        
+     
       </div>
     );
   }
