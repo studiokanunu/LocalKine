@@ -92,7 +92,7 @@ export default class List extends Component {
       }
 
       this.setState({
-        popup_visible: false,
+        popup_visible: true,
         popup_edditing_id: null,
         users: users_data
       });
@@ -146,8 +146,7 @@ export default class List extends Component {
     
     let users = this.state.users;
 
-     //This sets the data to LocalStorage
-     localStorage.setItem('item', JSON.stringify(users));
+   
 
     users = users.map((user, index) => {
       if (user.last.toLowerCase().indexOf(this.state.search_term.toLowerCase()) === 0) {
@@ -160,8 +159,10 @@ export default class List extends Component {
       else {
         return undefined;
       }
+      
     });
-
+  //This sets the data to LocalStorage
+  localStorage.setItem('item', JSON.stringify(users));
     // remove undefinded elements
     users = users.filter(function( element ) {
       return element !== undefined;
@@ -183,6 +184,7 @@ export default class List extends Component {
     });
 
     return (
+      
     	<div>
         <ListMenu 
           search={this.search}
